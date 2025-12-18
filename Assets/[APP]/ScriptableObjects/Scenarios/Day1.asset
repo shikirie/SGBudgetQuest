@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f19312958210974a86ede2bda2affc7, type: 3}
+  m_Name: Day1
+  m_EditorClassIdentifier: 
+  scenarioId: Day1
+  dayIndex: 1
+  questionTitle: 'Day 1 (Monday): The Canteen Rush'
+  questionText: First day of school! The canteen is packed, and the Chicken Rice
+    queue is super long. But the Premium Burger stand ($5) is empty.
+  questionIcon: {fileID: 0}
+  choices:
+  - choiceText: Patiently queue for Chicken Rice
+    choiceCost: 2
+    choiceHappiness: -5
+    choiceHappinessText: Tired from standing too long
+    spendCategory: 0
+    spendType: 1
+    choiceIcon: {fileID: 0}
+  - choiceText: Buy the Premium Burger
+    choiceCost: 5
+    choiceHappiness: 5
+    choiceHappinessText: Tasty & Fast
+    spendCategory: 0
+    spendType: 0
+    choiceIcon: {fileID: 0}

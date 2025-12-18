@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da8d5104c624f742b96287ece7261af, type: 3}
+  m_Name: SoundDatabase
+  m_EditorClassIdentifier: 
+  sounds:
+  - id: bgm
+    items:
+    - key: bgm_music1
+      value: {fileID: 8300000, guid: 6c1abf792f82d475088d047798903b9b, type: 3}
+      type: 0
+    - key: bgm_music2
+      value: {fileID: 8300000, guid: 9d9eeb1a614d548bebf7a7e6ba7db193, type: 3}
+      type: 0
+  - id: ambience
+    items:
+    - key: ambience_fire
+      value: {fileID: 8300000, guid: 5152a57fa02654908a75f5b9846dc6e9, type: 3}
+      type: 3
+  - id: sigil
+    items:
+    - key: sfx_sigil_busterflame_loop
+      value: {fileID: 8300000, guid: 74e3487660e8d45fb9130bc974d33974, type: 3}
+      type: 1
+    - key: sfx_sigil_crossicicle_impact
+      value: {fileID: 8300000, guid: ac11910a7eabb400f861c14fc55330fb, type: 3}
+      type: 1
+    - key: sfx_sigil_droppingdwara_impact
+      value: {fileID: 8300000, guid: ae0683c33a8ac4bfeb786a5578b47564, type: 3}
+      type: 1
+    - key: sfx_sigil_flashingslash_cast
+      value: {fileID: 8300000, guid: ae9663e6039fe419fa5c82827f70595b, type: 3}
+      type: 1
+    - key: sfx_sigil_scarlethornet_cast
+      value: {fileID: 8300000, guid: b3986786cfdc44a2a9372301298e1463, type: 3}
+      type: 1
+    - key: sfx_sigil_scarlethornet_impact
+      value: {fileID: 8300000, guid: 9bd3280d405724feba2c8e1d5f7f8ccf, type: 3}
+      type: 1
+    - key: ui_sigil_cooldown
+      value: {fileID: 8300000, guid: 1c1547796dbec49b5b39e95bc73911d1, type: 3}
+      type: 2
+  - id: autospell
+    items:
+    - key: sfx_auto_shadowthorne_cast
+      value: {fileID: 8300000, guid: b870c1f5f94b04e138df24607b1471a2, type: 3}
+      type: 1
+  - id: enemy
+    items:
+    - key: sfx_enemy_death
+      value: {fileID: 8300000, guid: fde1707c9792f4df39e2ef6d702cf6fa, type: 3}
+      type: 1
+    - key: sfx_enemy_archercharge
+      value: {fileID: 8300000, guid: 021915a94c1a04e09a3e2aa3244ae906, type: 3}
+      type: 1
+    - key: sfx_enemy_archershoot
+      value: {fileID: 8300000, guid: aedda46b774c5455a9dc6a8ff733c692, type: 3}
+      type: 1
+    - key: sfx_enemy_castercharge
+      value: {fileID: 8300000, guid: 98f6293b7fafd4c83a5f243a231ae8bb, type: 3}
+      type: 1
+    - key: sfx_enemy_castershoot
+      value: {fileID: 8300000, guid: c47867a6beeb94a78b1f585d51c135a0, type: 3}
+      type: 1
+    - key: sfx_enemy_fighterattack
+      value: {fileID: 8300000, guid: 25685bbbfd5a640b8af86b751436269c, type: 3}
+      type: 1
+    - key: sfx_enemy_footstep1
+      value: {fileID: 8300000, guid: 071c35d84ca75420b8f8f2374a306687, type: 3}
+      type: 1
+    - key: sfx_enemy_footstep2
+      value: {fileID: 8300000, guid: 37f38c2ae32ae45fa884f9fcf0af6711, type: 3}
+      type: 1
+  - id: others
+    items:
+    - key: sfx_click
+      value: {fileID: 8300000, guid: 80c1e550bd0c54f6ebb260216da082f3, type: 3}
+      type: 2
+    - key: sfx_playbutton
+      value: {fileID: 8300000, guid: b58affb4f15b04f3aa2f6787d633ebac, type: 3}
+      type: 2
+    - key: ui_others_absorbkuld
+      value: {fileID: 8300000, guid: a2e42fe2e0b9041e68e3ae2ae48bc966, type: 3}
+      type: 2
+    - key: ui_others_absorbsp
+      value: {fileID: 8300000, guid: 6204cc8593a1647d69f0c01ff712a2c1, type: 3}
+      type: 2
+  - id: player
+    items:
+    - key: sfx_player_damaged
+      value: {fileID: 8300000, guid: 282d350648dc04ffe87727e40686b12f, type: 3}
+      type: 1
+    - key: ui_player_spstack
+      value: {fileID: 8300000, guid: 45713b78a4d4f46408962cda9577ece9, type: 3}
+      type: 2
+  - id: levelup
+    items:
+    - key: ui_levelup_boonshold
+      value: {fileID: 8300000, guid: d1cf133876da040709ef690e7ad05d0b, type: 3}
+      type: 2
+    - key: ui_levelup_boonsholdcomplete
+      value: {fileID: 8300000, guid: bc8b72e1af28344a3b29652bab55de17, type: 3}
+      type: 2
+    - key: ui_levelup_boonsselect
+      value: {fileID: 8300000, guid: 80c1e550bd0c54f6ebb260216da082f3, type: 3}
+      type: 2
+    - key: ui_levelup_boonsrefresh
+      value: {fileID: 8300000, guid: 79d241234f39942e3aaa36c40055ff5c, type: 3}
+      type: 2
+    - key: ui_levelup_enter
+      value: {fileID: 8300000, guid: 797fe4de1cb6d4c75bd0cee21ffaf705, type: 3}
+      type: 2
+    - key: ambience_levelup
+      value: {fileID: 8300000, guid: 0eb14d2e326a544a8a30199951b3000b, type: 3}
+      type: 3
+  - id: tutorial
+    items:
+    - key: ui_tutorial_buttonnext
+      value: {fileID: 8300000, guid: 346b0b3aac71c44b59c11d2a3c4bae01, type: 3}
+      type: 2
+    - key: ui_tutorial_overlayenter
+      value: {fileID: 8300000, guid: fd5754874c9e8480cb82f30f579f1c7e, type: 3}
+      type: 2
+  - id: awakening
+    items:
+    - key: ui_awakening_notif
+      value: {fileID: 8300000, guid: 99fc7d7e061db492fa3f666c2f58c372, type: 3}
+      type: 2
+    - key: ui_awakening_trigger
+      value: {fileID: 8300000, guid: bf5a077dd42b843418db31ca60af8200, type: 3}
+      type: 2
+    - key: ambience_awakening
+      value: {fileID: 8300000, guid: ca94218bc56664ff9b1fe5c876e1e49b, type: 3}
+      type: 3
