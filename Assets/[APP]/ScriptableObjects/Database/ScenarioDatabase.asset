@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c5ffe4733381e41b318ec6c9e5c3d9, type: 3}
+  m_Name: ScenarioDatabase
+  m_EditorClassIdentifier: 
+  searchFolders:
+  - Assets/[APP]/ScriptableObjects/Scenarios
+  items:
+  - key: Day1
+    value: {fileID: 11400000, guid: 89fc464a4b23e0b4fba763344c1295ca, type: 2}
+  - key: Day2
+    value: {fileID: 11400000, guid: 00e77a05973122944b54edd6939e03e8, type: 2}
+  - key: Day3
+    value: {fileID: 11400000, guid: 5f11b95b134c6c64bb72bc24ef1bfb6d, type: 2}
+  - key: Day4
+    value: {fileID: 11400000, guid: af404efec36a9d54881c6785610ff287, type: 2}
+  - key: Day5
+    value: {fileID: 11400000, guid: 6684a4f4dc8d6ab4d9537f4b6b7654ce, type: 2}
+  - key: Day6
+    value: {fileID: 11400000, guid: 0bf8e530bb3266b4b9a2b3a4a392216e, type: 2}
+  - key: Day7
+    value: {fileID: 11400000, guid: 85bb0e1f46710824980081867616534a, type: 2}
