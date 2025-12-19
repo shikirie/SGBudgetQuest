@@ -1,82 +1,132 @@
 using System;
-using Modules.SavingSystems;
 using SimpleJSON;
 using UnityEngine;
+using VContainer;
 
 [Serializable]
-public class ActiveSessionData : ISaveable
+public class ActiveSessionData
 {
-    private SessionDataSummary sessionSummary;
-    private float initialAllowance;
-    private int initialHappiness;
+    public SessionDataSummary SessionSummary { get; private set; }
+    public float InitialAllowance { get; private set; }
+    public int InitialHappiness { get; private set; }
+    public GoalData CurrentGoal { get; private set; }
+    public float TotalWalletSpent { get; private set; }
 
-    public SessionDataSummary SessionSummary => sessionSummary;
-    public float InitialAllowance => initialAllowance;
-    public int InitialHappiness => initialHappiness;
+    [Inject] private readonly GameplaySettings gameplaySettings;
 
     public void StartNewSession(GoalData currentGoal)
     {
-        initialAllowance = 50;
-        initialHappiness = 100;
+        if (currentGoal == null)
+        {
+            Debug.LogError("[ActiveSessionData] Cannot start new session: currentGoal is null.");
+            return;
+        }
 
-        sessionSummary = new SessionDataSummary();
-        sessionSummary.session_id = Guid.NewGuid().ToString();
-        sessionSummary.currentHappiness = initialHappiness;
-        sessionSummary.currentSavings = 0;
-        sessionSummary.currentWallet = 0;
-        sessionSummary.weeklySpentNeeds = 0;
-        sessionSummary.weeklySpentWants = 0;
-        sessionSummary.currentDay = 1;
-        sessionSummary.currentGoal = currentGoal;
+        if (gameplaySettings != null)
+        {
+            Debug.LogError("[ActiveSessionData] Cannot start new session: gameplaySettings is null.");
+            return;
+        }
 
-        Debug.Log($"[ActiveSessionData] New session started with Session ID: {sessionSummary.session_id}");
+        CurrentGoal = currentGoal;
+        InitialAllowance = gameplaySettings.InitialAllowance;
+        InitialHappiness = gameplaySettings.InitialHappiness;
+
+        SessionSummary = new SessionDataSummary
+        {
+            sessionId = $"Student_{Guid.NewGuid()}",
+            currentHappiness = InitialHappiness,
+            currentSavings = 0,
+            currentWallet = 0,
+            weeklySpentNeeds = 0,
+            weeklySpentWants = 0,
+            daySurvived = 0,
+            goalName = CurrentGoal.GoalName,
+            goalCost = CurrentGoal.TargetPrice,
+        };
+
+        Debug.Log($"[ActiveSessionData] New session started with Session ID: {SessionSummary.sessionId}");
         GameplayEvents.OnSessionInitialized?.Invoke();
     }
 
     public void AddToSavings(float amount)
     {
-        sessionSummary.currentSavings += amount;
+        if (SessionSummary == null)
+        {
+            Debug.LogWarning("[ActiveSessionData] Cannot add to savings: no active session.");
+            return;
+        }
+
+        SessionSummary.currentSavings += amount;
     }
 
     public void AddToWallet(float amount)
     {
-        sessionSummary.currentWallet += amount;
-    }
-
-    public void SpendFromWallet(int amount, bool isNeed)
-    {
-        if (amount > sessionSummary.currentWallet)
+        if (SessionSummary == null)
         {
-            Debug.LogWarning($"[ActiveSessionData] Not enough funds in wallet to spend {amount}.");
-
+            Debug.LogWarning("[ActiveSessionData] Cannot add to wallet: no active session.");
             return;
         }
 
-        sessionSummary.currentWallet -= amount;
-
-        if (isNeed)
-        {
-            sessionSummary.weeklySpentNeeds += amount;
-        }
-        else
-        {
-            sessionSummary.weeklySpentWants += amount;
-        }
+        SessionSummary.currentWallet += amount;
     }
 
-    #region Serialization (ISaveable)
-
-    public JSONNode AsJSON()
+    public void SpendFromWallet(ChoiceData choice)
     {
-        throw new NotImplementedException();
+        if (SessionSummary == null)
+        {
+            Debug.LogWarning("[ActiveSessionData] Cannot spend: no active session.");
+            return;
+        }
+
+        float cost = choice.ChoiceCost;
+        if (cost > SessionSummary.currentWallet)
+        {
+            Debug.LogWarning($"[ActiveSessionData] Not enough funds in wallet to spend {cost}.");
+            return;
+        }
+
+        SessionSummary.currentWallet -= cost;
+
+        switch (choice.SpendType)
+        {
+            case SpendType.Needs:
+                SessionSummary.weeklySpentNeeds += cost;
+                break;
+            case SpendType.Wants:
+                SessionSummary.weeklySpentWants += cost;
+                break;
+        }
+
+        switch (choice.SpendCategory)
+        {
+            case SpendCategory.Food:
+                SessionSummary.weeklyFoodSpent += cost;
+                break;
+            case SpendCategory.Transport:
+                SessionSummary.weeklyTransportSpent += cost;
+                break;
+            case SpendCategory.Social:
+                SessionSummary.weeklySocialSpent += cost;
+                break;
+            case SpendCategory.Shopping:
+                SessionSummary.weeklyShoppingSpent += cost;
+                break;
+        }
+
+        TotalWalletSpent = SessionSummary.totalWalletSpent += cost;
     }
 
-    public void LoadFromJSON(JSONNode json)
+    public void UpdateHappiness(ChoiceData choice)
     {
-        throw new NotImplementedException();
-    }
+        if (SessionSummary == null)
+        {
+            Debug.LogWarning("[ActiveSessionData] Cannot update happiness: no active session.");
+            return;
+        }
 
-    #endregion
+        SessionSummary.currentHappiness = Math.Clamp(SessionSummary.currentHappiness + choice.ChoiceHappiness, 0, 100);
+    }
 }
 
 #region Supporting Data Structures
@@ -84,14 +134,27 @@ public class ActiveSessionData : ISaveable
 [Serializable]
 public class SessionDataSummary
 {
-    public string session_id;
+    public string sessionId;
+
     public int currentHappiness;
     public float currentSavings;
     public float currentWallet;
+
     public float weeklySpentNeeds;
     public float weeklySpentWants;
-    public int currentDay;
-    public GoalData currentGoal;
-    public float TotalSpent => weeklySpentNeeds + weeklySpentWants;
+    public float weeklyFoodSpent;
+    public float weeklyTransportSpent;
+    public float weeklySocialSpent;
+    public float weeklyShoppingSpent;
+
+    public float totalWalletSpent;
+
+    public int daySurvived;
+
+    public string goalName;
+    public float goalCost;
+
+    public bool isWin;
 }
+
 #endregion

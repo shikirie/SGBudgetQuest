@@ -50,3 +50,4 @@ MonoBehaviour:
   autoInjectGameObjects: []
   goalDatabase: {fileID: 11400000, guid: 9896dd662250daf448f91ad151e7fcb3, type: 2}
   scenarioDatabase: {fileID: 11400000, guid: 20d78fbb04f2203469a0444d2f131558, type: 2}
+  gameplaySettings: {fileID: 11400000, guid: 7bf444c78f9d3f64b8e1f82f715b9c01, type: 2}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goalId: Goal2Medium
   goalName: Discounted Sneakers
-  goalIcon: {fileID: 0}
+  goalIcon: {fileID: 21300000, guid: 6f0dfe0dcb74cca48bad623dc223c5b9, type: 3}
   goalDescription: My dream shoes are 50% off. Gotta buy them this week!
   targetPrice: 30
   difficulty: 1

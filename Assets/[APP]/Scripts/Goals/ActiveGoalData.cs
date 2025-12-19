@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using SimpleJSON;
-using Modules.SavingSystems;
 
 [Serializable]
-public class ActiveGoalData : ISaveable
+public class ActiveGoalData
 {
     private readonly GoalDatabase goalDatabase;
 
@@ -24,20 +22,6 @@ public class ActiveGoalData : ISaveable
     /// Gets all static goal data from the database.
     /// </summary>
     public List<GoalData> GetAllGoalData() => new List<GoalData>(goalDatabase.GetAllItems());
-
-    #endregion
-
-    #region Serialization (ISaveable)
-
-    public JSONNode AsJSON()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void LoadFromJSON(JSONNode json)
-    {
-        throw new NotImplementedException();
-    }
 
     #endregion
 }

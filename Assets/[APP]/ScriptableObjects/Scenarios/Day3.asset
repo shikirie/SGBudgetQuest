@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Day3
   m_EditorClassIdentifier: 
   scenarioId: Day3
-  dayIndex: 3
-  questionTitle: 'Day 3 (Wednesday): Transport Trouble'
+  dayIndex: 2
+  questionTitle: Day 3 (Wednesday)
+  questionSubtitle: Transport Trouble
   questionText: Uh oh! You woke up late. If you take the Bus/MRT, you'll definitely
     be late for school and get punished.
   questionIcon: {fileID: 0}
@@ -25,11 +26,11 @@ MonoBehaviour:
     choiceHappinessText: Scolded by teacher + Embarrassed
     spendCategory: 1
     spendType: 1
-    choiceIcon: {fileID: 0}
+    choiceIcon: {fileID: 21300000, guid: 837dd1852741af0408666164b9d9f506, type: 3}
   - choiceText: Order a Grab Car
     choiceCost: 14
     choiceHappiness: 5
     choiceHappinessText: Arrived safely & Comfortable
     spendCategory: 1
     spendType: 0
-    choiceIcon: {fileID: 0}
+    choiceIcon: {fileID: 21300000, guid: aa57bdc489562914395e49adafdde54d, type: 3}

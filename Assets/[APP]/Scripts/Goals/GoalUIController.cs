@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GoalUIController : BaseController
 {
+    [SerializeField] private TMP_Text textDescription;
     [SerializeField] private GoalItemUI goalItemPrefab;
     [SerializeField] private Transform goalListContainer;
     [SerializeField] private ToggleGroup goalToggleGroup;
@@ -26,10 +27,11 @@ public class GoalUIController : BaseController
         buttonConfirm.onClick.RemoveListener(HandleOnButtonConfirmClicked);
     }
 
-    public void Initialize(GoalData[] goals, Action<GoalData> onGoalSelected)
+    public void Initialize(float initialAllowance, GoalData[] goals, Action<GoalData> onGoalSelected)
     {
         this.goals = goals;
         this.onGoalSelected = onGoalSelected;
+        textDescription.text = $"You have <color=#38A239><b><size=45>S${initialAllowance:F2}</size></b></color> for the week.\nPick an item you want to buy at the end of the week!";
         LoadGoals();
     }
 

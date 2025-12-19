@@ -4,7 +4,6 @@ using VContainer.Unity;
 
 public class GameplayService : IInitializable, IStartable, IPostStartable, ITickable, IDisposable
 {
-    [Inject] public readonly ProjectSavingSystem SavingSystem;
     [Inject] public readonly ActiveSessionData ActiveSessionData;
     [Inject] public readonly ActiveScenarioData ActiveScenarioData;
     [Inject] public readonly ActiveGoalData ActiveGoalData;
@@ -13,10 +12,11 @@ public class GameplayService : IInitializable, IStartable, IPostStartable, ITick
 
     private readonly SubService[] subServices = new SubService[]
     {
-        // new GameplayGoalService(),
-        // new GameplayBudgetingService(),
-        // new GameplayScenarioService(),
-        // new GameplayReportService(),
+        new GameplayGoalService(),
+        new GameplayBudgetingService(),
+        new GameplayScenarioService(),
+        new GameplayReportService(),
+        new GameplayStatusService(),
     };
 
     public GameplayService(GameplayView view)
