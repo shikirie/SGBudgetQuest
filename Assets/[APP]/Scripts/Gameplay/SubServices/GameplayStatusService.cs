@@ -9,6 +9,4 @@ public class GameplayStatusService : SubService
         this.gameplayService = gameplayService;
         statusUIController = gameplayService.View.StatusUIController;
     }
-
-
 }

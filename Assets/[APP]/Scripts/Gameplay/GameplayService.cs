@@ -15,8 +15,8 @@ public class GameplayService : IInitializable, IStartable, IPostStartable, ITick
         new GameplayGoalService(),
         new GameplayBudgetingService(),
         new GameplayScenarioService(),
-        new GameplayReportService(),
         new GameplayStatusService(),
+        new GameplayReportService(),
     };
 
     public GameplayService(GameplayView view)
