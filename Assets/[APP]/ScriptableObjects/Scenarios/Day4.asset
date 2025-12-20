@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f19312958210974a86ede2bda2affc7, type: 3}
+  m_Name: Day4
+  m_EditorClassIdentifier: 
+  scenarioId: Day4
+  dayIndex: 3
+  questionTitle: Day 4 (Thursday)
+  questionSubtitle: Peer Pressure
+  questionText: After school, the squad wants to go gaming at the Cyber Cafe near
+    school.
+  questionIcon: {fileID: 0}
+  choices:
+  - choiceText: Skip it, go straight home
+    choiceCost: 0
+    choiceHappiness: -10
+    choiceHappinessText: Called uncool / FOMO
+    spendCategory: 2
+    spendType: 1
+    choiceIcon: {fileID: 21300000, guid: e113ab23511340944a21b22024c97174, type: 3}
+  - choiceText: Join the gaming session!
+    choiceCost: 8
+    choiceHappiness: 15
+    choiceHappinessText: A total blast!
+    spendCategory: 2
+    spendType: 0
+    choiceIcon: {fileID: 21300000, guid: 2ae2cb81056beff4a9adc01f184a25b4, type: 3}

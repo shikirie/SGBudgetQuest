@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f19312958210974a86ede2bda2affc7, type: 3}
+  m_Name: Day5
+  m_EditorClassIdentifier: 
+  scenarioId: Day5
+  dayIndex: 4
+  questionTitle: Day 5 (Friday)
+  questionSubtitle: Stationery Crisis
+  questionText: My only pen stopped working while doing an assignment. I have to
+    buy a new one at the school bookshop.
+  questionIcon: {fileID: 0}
+  choices:
+  - choiceText: Buy a standard pen
+    choiceCost: 1.5
+    choiceHappiness: 0
+    choiceHappinessText: As long as it writes
+    spendCategory: 3
+    spendType: 1
+    choiceIcon: {fileID: 21300000, guid: 5954fd03d04816f49adc5150095e3d82, type: 3}
+  - choiceText: Buy a cute character pen
+    choiceCost: 4
+    choiceHappiness: 5
+    choiceHappinessText: Motivated to write
+    spendCategory: 3
+    spendType: 0
+    choiceIcon: {fileID: 21300000, guid: aacdd52c77ce39b438766479a6f34329, type: 3}
