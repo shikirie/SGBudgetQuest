@@ -4,11 +4,10 @@ using System.Collections;
 using System.Text;
 using VContainer;
 
-public class APIManager : MonoBehaviour
+public class APIManager
 {
-    private string apiUrl;
+    private readonly string apiUrl;
 
-    [Inject]
     public APIManager(GameplaySettings gameplaySettings)
     {
         apiUrl = gameplaySettings.ApiUrl;

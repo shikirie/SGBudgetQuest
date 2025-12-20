@@ -71,7 +71,7 @@ public class BudgetingUIController : BaseController
 
         textWallet.text = $"<size=40>Wallet</size>\nS${walletAmount:F2}";
 
-        if (savingsAmount < selectedGoal.TargetPrice)
+        if (selectedGoal != null && savingsAmount < selectedGoal.TargetPrice)
         {
             textAlert.text = "NOT ENOUGH! Increase savings to reach your goal.";
             textAlert.color = new Color(0.882353f, 0.4f, 0.3529412f);

@@ -28,7 +28,7 @@ namespace Modules.CurrencyBarUISystem
         [SerializeField] private bool useUnscaledTime = true;
         [SerializeField] private string suffix = "";
 
-        private Queue<float> changeQueue = new Queue<float>();
+        private Queue<float> changeQueue;
         private float currentValue;
         private Coroutine valueAnimationCoroutine;
 
@@ -38,6 +38,14 @@ namespace Modules.CurrencyBarUISystem
 
         private void Awake()
         {
+            changeQueue = new Queue<float>();
+            
+            if (valueChangeTextPrefab == null || valueChangeTransform == null)
+            {
+                Debug.LogWarning($"CurrencyBarUI on {gameObject.name}: Missing prefab or transform references", this);
+                return;
+            }
+            
             for (int i = 0; i < poolSize; i++)
             {
                 TMP_Text popup = Instantiate(valueChangeTextPrefab, valueChangeTransform);
@@ -60,6 +68,8 @@ namespace Modules.CurrencyBarUISystem
 
         public void SetValue(float value)
         {
+            if (valueText == null) return;
+            
             if (valueAnimationCoroutine != null)
                 StopCoroutine(valueAnimationCoroutine);
 
@@ -85,6 +95,8 @@ namespace Modules.CurrencyBarUISystem
 
         public void SetValueImmediate(float value)
         {
+            if (valueText == null) return;
+            
             currentValue = value;
 
             if (currentValue <= 0)
@@ -115,6 +127,8 @@ namespace Modules.CurrencyBarUISystem
 
         private IEnumerator FlashColor(bool isPositive)
         {
+            if (valueText == null) yield break;
+            
             valueText.color = isPositive ? validColor : invalidColor;
 
             if (useUnscaledTime)
@@ -181,7 +195,7 @@ namespace Modules.CurrencyBarUISystem
                 yield break;
             }
 
-            if (popup.spriteAsset == null || popup.spriteAsset.name != valueChangeSpriteAsset.name)
+            if (valueChangeSpriteAsset != null && (popup.spriteAsset == null || popup.spriteAsset.name != valueChangeSpriteAsset.name))
             {
                 popup.spriteAsset = valueChangeSpriteAsset;
             }
