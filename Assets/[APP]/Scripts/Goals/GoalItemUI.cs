@@ -22,7 +22,7 @@ public class GoalItemUI : BaseItemUI
 
         textTitle.text = goalData.GoalName;
         imageIcon.sprite = goalData.GoalIcon;
-        textPrice.text = $"<size=30>PRICE</size>\nS${goalData.TargetPrice:F2}";
+        textPrice.text = $"<size=30>PRICE</size>\nS${goalData.TargetPrice:F1}";
         textDifficulty.text = goalData.Difficulty.ToString();
     }
 

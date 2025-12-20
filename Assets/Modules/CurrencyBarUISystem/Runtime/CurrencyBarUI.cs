@@ -79,9 +79,16 @@ namespace Modules.CurrencyBarUISystem
             }
             else
             {
-                valueText.text = value > 0 ? $"{value:##,###}{suffix}" : $"0{suffix}";
+                if (string.IsNullOrEmpty(suffix))
+                {
+                    valueText.text = $"{(int)value}";
+                }
+                else
+                {
+                    valueText.text = value > 0 ? $"{value:##,###}{suffix}" : $"0{suffix}";
+                }
 
-                if (showColorChange)
+                if (showColorChange && value != currentValue)
                     StartCoroutine(FlashColor(value >= currentValue));
             }
 
@@ -104,7 +111,14 @@ namespace Modules.CurrencyBarUISystem
                 currentValue = 0;
             }
 
-            valueText.text = currentValue > 0 ? $"{currentValue:##,###}{suffix}" : $"0{suffix}";
+            if (string.IsNullOrEmpty(suffix))
+            {
+                valueText.text = $"{(int)currentValue}";
+            }
+            else
+            {
+                valueText.text = currentValue > 0 ? $"{currentValue:##,###}{suffix}" : $"0{suffix}";
+            }
         }
 
         public float GetValue()
@@ -114,6 +128,8 @@ namespace Modules.CurrencyBarUISystem
 
         public void ShowChange(float delta)
         {
+            if (delta == 0) return;
+
             if (currentValue <= 0 && delta < 0)
                 return;
 
@@ -145,7 +161,7 @@ namespace Modules.CurrencyBarUISystem
 
             bool isPositive = toValue >= fromValue;
 
-            if (showColorChange)
+            if (showColorChange && toValue != fromValue)
                 valueText.color = isPositive ? validColor : invalidColor;
 
             float elapsed = 0f;
@@ -165,7 +181,7 @@ namespace Modules.CurrencyBarUISystem
             int finalValue = Mathf.FloorToInt(toValue);
             valueText.text = finalValue > 0 ? $"{finalValue:##,###}{suffix}" : $"0{suffix}";
 
-            if (showColorChange)
+            if (showColorChange && toValue != fromValue)
                 valueText.color = defaultColor;
         }
 
@@ -201,7 +217,7 @@ namespace Modules.CurrencyBarUISystem
             }
 
             bool isPositive = delta > 0;
-            popup.text = $"{(isPositive ? "+" : "-")}<sprite index=0>{Mathf.Abs(delta):N0}";
+            popup.text = $"{(isPositive ? "+" : "-")}<sprite index=0>{Mathf.Abs(delta):N1}";
 
             if (showColorChange)
                 popup.color = isPositive ? validColor : invalidColor;

@@ -52,6 +52,9 @@ public class ScenarioUIController : BaseController
 
     private void LoadChoices()
     {
+        // Clear existing choices
+        ClearChoices();
+        
         foreach (ChoiceData choice in currentScenario.Choices)
         {
             ScenarioItemUI scenarioItem = Instantiate(scenarioItemPrefab, scenarioListContainer);
@@ -61,6 +64,14 @@ public class ScenarioUIController : BaseController
 
         scenarioToggleGroup.SetAllTogglesOff(false);
         selectedChoice = null;
+    }
+
+    private void ClearChoices()
+    {
+        for (int i = scenarioListContainer.childCount - 1; i >= 0; i--)
+        {
+            Destroy(scenarioListContainer.GetChild(i).gameObject);
+        }
     }
 
     public void SetButtonConfirmText(string text)
@@ -75,6 +86,9 @@ public class ScenarioUIController : BaseController
 
     private void HandleButtonConfirmClicked()
     {
+        if (scenarioToggleGroup.AnyTogglesOn() == false)
+            return;
+            
         if (selectedChoice != null)
         {
             onChoiceSelected?.Invoke(selectedChoice);

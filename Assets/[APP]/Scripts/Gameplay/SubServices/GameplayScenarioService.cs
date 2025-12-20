@@ -41,6 +41,14 @@ public class GameplayScenarioService : SubService
         // Load all scenarios untuk week ini (day 0-6)
         LoadWeekScenarios();
         
+        // Check bankruptcy before starting scenarios
+        if (gameplayService.ActiveSessionData.CheckBankruptcy())
+        {
+            Debug.LogWarning("[GameplayScenarioService] Player is BANKRUPT at start! Ending session...");
+            HandleBankruptcy();
+            return;
+        }
+        
         Debug.Log("[GameplayScenarioService] Starting scenario gameplay...");
         
         // Trigger session started event untuk notify status service dll
@@ -84,6 +92,14 @@ public class GameplayScenarioService : SubService
     private void ShowNextScenario()
     {
         int currentDayIndex = gameplayService.ActiveSessionData.GetCurrentDay() - 1;
+        
+        // Check bankruptcy before showing scenario
+        if (gameplayService.ActiveSessionData.CheckBankruptcy())
+        {
+            Debug.LogWarning("[GameplayScenarioService] Player is BANKRUPT before showing scenario! Ending session...");
+            HandleBankruptcy();
+            return;
+        }
         
         if (currentDayIndex >= TOTAL_DAYS)
         {
@@ -142,6 +158,16 @@ public class GameplayScenarioService : SubService
         
         // Update session data dengan choice
         var sessionData = gameplayService.ActiveSessionData;
+        
+        // Check if player can afford the choice
+        if (choice.ChoiceCost > 0 && sessionData.SessionSummary.currentWallet < choice.ChoiceCost)
+        {
+            Debug.LogWarning("[GameplayScenarioService] Player cannot afford this choice! Ending session...");
+            scenarioUIController.Hide();
+            HandleBankruptcy();
+            return;
+        }
+        
         sessionData.SpendFromWallet(choice);
         sessionData.UpdateHappiness(choice);
         

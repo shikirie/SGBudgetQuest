@@ -47,11 +47,11 @@ public class BudgetingUIController : BaseController
         sliderBudgeting.minValue = 0f;
         sliderBudgeting.maxValue = initialAllowance;
         sliderBudgeting.value = initialAllowance / 2;
-        textAllowance.text = $"S${initialAllowance:F2}";
+        textAllowance.text = $"S${initialAllowance:F1}";
         if (selectedGoal != null)
         {
             imageGoalIcon.sprite = selectedGoal.GoalIcon;
-            textGoalTarget.text = $"Goal: S${selectedGoal.TargetPrice:F2}";
+            textGoalTarget.text = $"S${selectedGoal.TargetPrice:F1}";
         }
         else
         {
@@ -67,9 +67,9 @@ public class BudgetingUIController : BaseController
         savingsAmount = sliderBudgeting.value;
         walletAmount = initialAllowance - savingsAmount;
 
-        textSavings.text = $"<size=40>Savings</size>\nS${savingsAmount:F2}";
+        textSavings.text = $"<size=40>Savings</size>\nS${savingsAmount:F1}";
 
-        textWallet.text = $"<size=40>Wallet</size>\nS${walletAmount:F2}";
+        textWallet.text = $"<size=40>Wallet</size>\nS${walletAmount:F1}";
 
         if (selectedGoal != null && savingsAmount < selectedGoal.TargetPrice)
         {

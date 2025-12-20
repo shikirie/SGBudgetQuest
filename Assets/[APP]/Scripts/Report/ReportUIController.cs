@@ -41,7 +41,7 @@ public class ReportUIController : BaseController
     private const int HAPPINESS_DRAINED_THRESHOLD = 30;
     private const int LEAK_CATEGORY_FONT_SIZE = 35;
     private const string CURRENCY_SYMBOL = "S$";
-    private const string MONEY_FORMAT = "F2";
+    private const string MONEY_FORMAT = "F1";
 
     private Action onConfirmCallback;
     private ActiveSessionData sessionData;
@@ -83,7 +83,6 @@ public class ReportUIController : BaseController
 
     private bool IsWinningSession(string sessionStatus)
     {
-        // Bankrupt is never a win
         if (sessionStatus == SessionStatus.Bankrupt.ToString())
         {
             return false;
@@ -135,7 +134,7 @@ public class ReportUIController : BaseController
         sbLeft.AppendLine("Needs");
         sbLeft.AppendLine($"<color={wantsColorHex}>Wants</color>");
         sbLeft.AppendLine();
-        sbLeft.Append($"<size={LEAK_CATEGORY_FONT_SIZE}>Biggest Leak Category:{sessionData.GetLeakiestCategory()}</size>");
+        sbLeft.Append($"<size={LEAK_CATEGORY_FONT_SIZE}>Biggest Leak Category: <uppercase>{sessionData.GetLeakiestCategory()}</uppercase></size>");
 
         var sbRight = new StringBuilder();
         sbRight.AppendLine($"{CURRENCY_SYMBOL}{reportData.weeklySpentNeeds.ToString(MONEY_FORMAT)}");

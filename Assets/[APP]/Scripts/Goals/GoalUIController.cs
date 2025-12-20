@@ -31,7 +31,7 @@ public class GoalUIController : BaseController
     {
         this.goals = goals;
         this.onGoalSelected = onGoalSelected;
-        textDescription.text = $"You have <color=#38A239><b><size=45>S${initialAllowance:F2}</size></b></color> for the week.\nPick an item you want to buy at the end of the week!";
+        textDescription.text = $"You have <color=#38A239><b><size=45>S${initialAllowance:F1}</size></b></color> for the week.\nPick an item you want to buy at the end of the week!";
         LoadGoals();
     }
 
@@ -55,6 +55,9 @@ public class GoalUIController : BaseController
 
     private void HandleOnButtonConfirmClicked()
     {
+        if (goalToggleGroup.AnyTogglesOn() == false)
+            return;
+            
         if (selectedGoal != null)
         {
             onGoalSelected?.Invoke(selectedGoal);

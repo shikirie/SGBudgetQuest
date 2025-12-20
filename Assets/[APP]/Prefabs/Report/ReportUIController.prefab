@@ -187,19 +187,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 3551191009035188307}
-  spriteColorChangerHeader: {fileID: 0}
-  imageGoalIcon: {fileID: 0}
-  textGoalNameAndCost: {fileID: 0}
-  spriteChangerGoalStatus: {fileID: 0}
-  textStatusSavings: {fileID: 0}
-  textStatusHappiness: {fileID: 0}
-  textLedger: {fileID: 0}
-  textExpendituresLeft: {fileID: 0}
-  textExpendituresRight: {fileID: 0}
-  textAuditorLogs: {fileID: 0}
-  buttonConfirm: {fileID: 0}
-  colorRed: {r: 0, g: 0, b: 0, a: 0}
-  colorGreen: {r: 0, g: 0, b: 0, a: 0}
+  spriteColorChangerHeader: {fileID: 8699494602340311066}
+  imageGoalIcon: {fileID: 303481059688840266}
+  textGoalNameAndCost: {fileID: 225242046325511119}
+  spriteChangerGoalStatus: {fileID: 352974939821683644}
+  textStatusSavings: {fileID: 7007099955212534991}
+  textStatusHappiness: {fileID: 7353604048679339414}
+  textLedger: {fileID: 169179856079571920}
+  textExpendituresLeft: {fileID: 5476209418668143742}
+  textExpendituresRight: {fileID: 3338573400401449194}
+  textAuditorLogs: {fileID: 9115541883240609614}
+  buttonConfirm: {fileID: 9130689660544935378}
+  colorRed: {r: 0.99607843, g: 0.003921569, b: 0, a: 1}
+  colorGreen: {r: 0.21960784, g: 0.63529414, b: 0.22352941, a: 1}
 --- !u!1 &1239009962790387431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,11 +1003,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
+  m_fontSize: 60
   m_fontSizeBase: 70
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 65
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 60
   m_fontSizeMax: 70
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -1081,8 +1081,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -225, y: -60}
-  m_SizeDelta: {x: -550, y: 163.12}
+  m_AnchoredPosition: {x: -125, y: -60}
+  m_SizeDelta: {x: -350, y: 163.12}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2603114208621016824
 CanvasRenderer:

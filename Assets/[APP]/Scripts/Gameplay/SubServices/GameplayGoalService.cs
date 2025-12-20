@@ -9,6 +9,8 @@ public class GameplayGoalService : SubService
     {
         base.Initialize(gameplayService);
         goalUIController = gameplayService.View.GoalUIController;
+        
+        GameplayEvents.OnGameRestarted += OnGameRestarted;
     }
 
     public override void Start()
@@ -22,6 +24,12 @@ public class GameplayGoalService : SubService
 
     public override void Dispose()
     {
+        GameplayEvents.OnGameRestarted -= OnGameRestarted;
+    }
+
+    private void OnGameRestarted()
+    {
+        ShowGoalSelection();
     }
 
     private void ShowGoalSelection()

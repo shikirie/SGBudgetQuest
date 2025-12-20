@@ -158,7 +158,7 @@ public class ActiveSessionData
             return false;
         }
 
-        return SessionSummary.currentWallet <= 0;
+        return SessionSummary.currentWallet <= 1.0f;
     }
 
     public void UpdateHappiness(ChoiceData choice)
@@ -193,7 +193,7 @@ public class ActiveSessionData
         }
 
         // Check bankruptcy first
-        if (SessionSummary.currentWallet <= 0)
+        if (SessionSummary.currentWallet <= 1.0f)
         {
             return SessionStatus.Bankrupt;
         }

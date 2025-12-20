@@ -24,6 +24,7 @@ public class StatusUIController : BaseController
         }
         else
         {
+            if (value == 0) return;
             currencyWalletUI.ShowChange(value);
             currencyWalletUI.SetValue(currencyWalletUI.GetValue() + value);
         }
@@ -33,12 +34,16 @@ public class StatusUIController : BaseController
     {
         if (immidiate)
         {
-            currencyHappinessUI.SetValueImmediate(value);
+            float clampedValue = Mathf.Clamp(value, 0, 100);
+            currencyHappinessUI.SetValueImmediate(clampedValue);
         }
         else
         {
+            if (value == 0) return;
             currencyHappinessUI.ShowChange(value);
-            currencyHappinessUI.SetValue(currencyHappinessUI.GetValue() + value);
+            float current = currencyHappinessUI.GetValue();
+            float newValue = Mathf.Clamp(current + value, 0, 100);
+            currencyHappinessUI.SetValue(newValue);
         }
 
         SetupHappinessIcon();

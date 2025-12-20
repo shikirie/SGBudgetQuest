@@ -49,9 +49,10 @@ public class GameplayReportService : SubService
 
     private void OnReportConfirmed()
     {
-        Debug.Log("[GameplayReportService] Report confirmed. Session ended.");
+        Debug.Log("[GameplayReportService] Report confirmed. Restarting new session.");
         reportUIController.Hide();
         
-        // TODO: Back to main menu atau restart
+        // Re-start new session
+        GameplayEvents.OnGameRestarted?.Invoke();
     }
 }

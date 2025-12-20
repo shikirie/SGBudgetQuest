@@ -22,8 +22,8 @@ public class ScenarioItemUI : BaseItemUI
 
         textTitle.text = choiceData.ChoiceText;
         imageIcon.sprite = choiceData.ChoiceIcon;
-        textPrice.text = $"S${choiceData.ChoiceCost:F2}";
-        string happinessSign = choiceData.ChoiceHappiness > 0 ? "+" : "-";
+        textPrice.text = $"S${choiceData.ChoiceCost:F1}";
+        string happinessSign = choiceData.ChoiceHappiness > 0 ? "+" : "";
         textHappiness.text = $"Happiness {happinessSign}{choiceData.ChoiceHappiness}";
     }
 

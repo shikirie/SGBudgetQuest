@@ -43,7 +43,7 @@ public class GameplayBudgetingService : SubService
         
         budgetingUIController.Hide();
         
-        Debug.Log($"[GameplayBudgetingService] Budget confirmed - Savings: S${savings:F2}, Wallet: S${wallet:F2}");
+        Debug.Log($"[GameplayBudgetingService] Budget confirmed - Savings: S${savings:F1}, Wallet: S${wallet:F1}");
         
         gameplayService.ActiveSessionData.AddToSavings(savings);
         gameplayService.ActiveSessionData.AddToWallet(wallet);

@@ -9,6 +9,7 @@ public static class GameplayEvents
     public static Action OnScenarioStarted;
     public static Action OnWeekEnded;
     public static Action OnPlayerBankrupt;
+    public static Action OnGameRestarted;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     static void Init()
@@ -19,5 +20,6 @@ public static class GameplayEvents
         OnScenarioStarted = null;
         OnWeekEnded = null;
         OnPlayerBankrupt = null;
+        OnGameRestarted = null;
     }
 }

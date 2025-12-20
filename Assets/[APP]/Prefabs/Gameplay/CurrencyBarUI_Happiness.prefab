@@ -124,6 +124,10 @@ PrefabInstance:
       propertyPath: valueChangeTextPrefab
       value: 
       objectReference: {fileID: 432543621072118270, guid: 3e743cb7334051e478b61ebe53117e46, type: 3}
+    - target: {fileID: 4129138685741154880, guid: c29545b2bd570f04b9e6dcfafbc77062, type: 3}
+      propertyPath: valueChangeSpriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 5587daf514b285646b96fb17b5321922, type: 2}
     - target: {fileID: 4418794051514121821, guid: c29545b2bd570f04b9e6dcfafbc77062, type: 3}
       propertyPath: m_Sprite
       value: 
