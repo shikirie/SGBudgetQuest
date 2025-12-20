@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Day6
   m_EditorClassIdentifier: 
   scenarioId: Day6
-  dayIndex: 6
-  questionTitle: 'Day 6 (Saturday): The Mall Temptation'
+  dayIndex: 5
+  questionTitle: Day 6 (Saturday)
+  questionSubtitle: The Mall Temptation
   questionText: Window shopping at the Mall. Hey, there's a really cool t-shirt on
     display.
   questionIcon: {fileID: 0}
@@ -25,11 +26,11 @@ MonoBehaviour:
     choiceHappinessText: Can't stop thinking about it
     spendCategory: 3
     spendType: 1
-    choiceIcon: {fileID: 0}
+    choiceIcon: {fileID: 21300000, guid: 65b54735b5070ad469f9070116b52c33, type: 3}
   - choiceText: Snag it!
     choiceCost: 15
     choiceHappiness: 20
     choiceHappinessText: So satisfying!
     spendCategory: 3
     spendType: 0
-    choiceIcon: {fileID: 0}
+    choiceIcon: {fileID: 21300000, guid: 1c1eff119c5373c4389b2f92b9ba6a26, type: 3}

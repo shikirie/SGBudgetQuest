@@ -4,19 +4,20 @@ using VContainer.Unity;
 
 public class GameplayService : IInitializable, IStartable, IPostStartable, ITickable, IDisposable
 {
-    [Inject] public readonly ProjectSavingSystem SavingSystem;
     [Inject] public readonly ActiveSessionData ActiveSessionData;
     [Inject] public readonly ActiveScenarioData ActiveScenarioData;
     [Inject] public readonly ActiveGoalData ActiveGoalData;
+    [Inject] public readonly APIManager APIManager;
 
     public GameplayView View { get; private set; }
 
     private readonly SubService[] subServices = new SubService[]
     {
-        // new GameplayGoalService(),
-        // new GameplayBudgetingService(),
-        // new GameplayScenarioService(),
-        // new GameplayReportService(),
+        new GameplayGoalService(),
+        new GameplayBudgetingService(),
+        new GameplayScenarioService(),
+        new GameplayStatusService(),
+        new GameplayReportService(),
     };
 
     public GameplayService(GameplayView view)
@@ -26,6 +27,9 @@ public class GameplayService : IInitializable, IStartable, IPostStartable, ITick
 
     void IInitializable.Initialize()
     {
+        // Initialize session data with settings
+        ActiveSessionData.Initialize();
+        
         for (int i = 0; i < subServices.Length; i++)
         {
             subServices[i].Initialize(this);

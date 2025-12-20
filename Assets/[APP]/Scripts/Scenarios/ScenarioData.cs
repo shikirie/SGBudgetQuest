@@ -14,6 +14,8 @@ public class ScenarioData : ScriptableObject
     [Header("Display Properties")]
     [SerializeField] private string questionTitle;
     public string QuestionTitle => questionTitle;
+    [SerializeField] private string questionSubtitle;
+    public string QuestionSubtitle => questionSubtitle;
     [SerializeField] private string questionText;
     public string QuestionText => questionText;
     [SerializeField] private Sprite questionIcon;

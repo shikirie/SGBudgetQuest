@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Day4
   m_EditorClassIdentifier: 
   scenarioId: Day4
-  dayIndex: 4
-  questionTitle: 'Day 4 (Thursday): Peer Pressure'
+  dayIndex: 3
+  questionTitle: Day 4 (Thursday)
+  questionSubtitle: Peer Pressure
   questionText: After school, the squad wants to go gaming at the Cyber Cafe near
     school.
   questionIcon: {fileID: 0}
@@ -25,11 +26,11 @@ MonoBehaviour:
     choiceHappinessText: Called uncool / FOMO
     spendCategory: 2
     spendType: 1
-    choiceIcon: {fileID: 0}
+    choiceIcon: {fileID: 21300000, guid: e113ab23511340944a21b22024c97174, type: 3}
   - choiceText: Join the gaming session!
     choiceCost: 8
     choiceHappiness: 15
     choiceHappinessText: A total blast!
     spendCategory: 2
     spendType: 0
-    choiceIcon: {fileID: 0}
+    choiceIcon: {fileID: 21300000, guid: 2ae2cb81056beff4a9adc01f184a25b4, type: 3}

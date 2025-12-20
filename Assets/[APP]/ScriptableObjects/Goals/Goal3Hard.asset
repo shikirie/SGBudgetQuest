@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goalId: Goal3Hard
   goalName: K-Pop Concert Ticket
-  goalIcon: {fileID: 0}
+  goalIcon: {fileID: 21300000, guid: 5b856eda4844c384790cfac64a7d1f58, type: 3}
   goalDescription: A once-in-a-lifetime chance to see my idols live!
   targetPrice: 35
   difficulty: 2

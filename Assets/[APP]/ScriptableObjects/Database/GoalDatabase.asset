@@ -15,9 +15,9 @@ MonoBehaviour:
   searchFolders:
   - Assets/[APP]/ScriptableObjects/Goals
   items:
-  - key: Goal1
+  - key: Goal1Easy
     value: {fileID: 11400000, guid: 5cdb419a3b3899b4b941aaaa96aaebd9, type: 2}
-  - key: Goal2
+  - key: Goal2Medium
     value: {fileID: 11400000, guid: 3a7cfe98ec55e94499f79ae4848bd709, type: 2}
-  - key: Goal3
+  - key: Goal3Hard
     value: {fileID: 11400000, guid: 49b950ca08a6de14a8bf7c9617d23f0a, type: 2}

@@ -17,11 +17,12 @@ namespace Modules
 
         private int w;
         private int h;
-        private GUIStyle style = new GUIStyle();
+        private GUIStyle style;
         private Rect rect;
 
         private void Awake()
         {
+            style = new GUIStyle();
             DontDestroyOnLoad(gameObject);
         }
 
