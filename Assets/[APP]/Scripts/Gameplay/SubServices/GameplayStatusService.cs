@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameplayStatusService : SubService
@@ -9,8 +10,8 @@ public class GameplayStatusService : SubService
         this.gameplayService = gameplayService;
         statusUIController = gameplayService.View.StatusUIController;
         
-        // Listen to session events
         GameplayEvents.OnScenarioStarted += OnScenarioStarted;
+        GameplayEvents.OnGameRestarted += OnGameRestarted;
     }
 
     public override void Start()
@@ -24,6 +25,7 @@ public class GameplayStatusService : SubService
     public override void Dispose()
     {
         GameplayEvents.OnScenarioStarted -= OnScenarioStarted;
+        GameplayEvents.OnGameRestarted -= OnGameRestarted;
     }
 
     private void OnScenarioStarted()
@@ -42,7 +44,7 @@ public class GameplayStatusService : SubService
     public void UpdateDayDisplay()
     {
         int currentDay = gameplayService.ActiveSessionData.GetCurrentDay();
-        statusUIController.SetDayText($"Day {currentDay}");
+        statusUIController.SetDayText($"Day {currentDay}/7");
     }
 
     public void UpdateWallet(float amount, bool immediate = false)
@@ -55,5 +57,8 @@ public class GameplayStatusService : SubService
         statusUIController.SetHappinessValue(value, immediate);
     }
 
-    public int GetCurrentDay() => gameplayService.ActiveSessionData.GetCurrentDay();
+    private void OnGameRestarted()
+    {
+        statusUIController.Hide();
+    }
 }

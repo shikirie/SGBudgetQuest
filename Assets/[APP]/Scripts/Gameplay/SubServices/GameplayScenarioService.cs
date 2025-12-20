@@ -14,6 +14,7 @@ public class GameplayScenarioService : SubService
         scenarioUIController = gameplayService.View.ScenarioUIController;
         
         GameplayEvents.OnBudgetConfirmed += OnBudgetConfirmed;
+        GameplayEvents.OnGameRestarted += OnGameRestarted;
     }
 
     public override void Start()
@@ -27,6 +28,14 @@ public class GameplayScenarioService : SubService
     public override void Dispose()
     {
         GameplayEvents.OnBudgetConfirmed -= OnBudgetConfirmed;
+        GameplayEvents.OnGameRestarted -= OnGameRestarted;
+    }
+
+    private void OnGameRestarted()
+    {
+        // Reset state for new session
+        sessionStarted = false;
+        weekScenarios = null;
     }
 
     private void OnBudgetConfirmed()
@@ -162,7 +171,8 @@ public class GameplayScenarioService : SubService
         // Check if player can afford the choice
         if (choice.ChoiceCost > 0 && sessionData.SessionSummary.currentWallet < choice.ChoiceCost)
         {
-            Debug.LogWarning("[GameplayScenarioService] Player cannot afford this choice! Ending session...");
+            Debug.LogWarning("[GameplayScenarioService] Player cannot afford this choice! Setting wallet to 0 and ending session...");
+            sessionData.SessionSummary.currentWallet = 0;
             scenarioUIController.Hide();
             HandleBankruptcy();
             return;

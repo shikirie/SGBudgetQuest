@@ -37,6 +37,9 @@ public class GoalUIController : BaseController
 
     private void LoadGoals()
     {
+        // Clear existing goals
+        ClearGoals();
+        
         foreach (GoalData goal in goals)
         {
             GoalItemUI goalItem = Instantiate(goalItemPrefab, goalListContainer);
@@ -46,6 +49,14 @@ public class GoalUIController : BaseController
 
         goalToggleGroup.SetAllTogglesOff(false);
         selectedGoal = null;
+    }
+
+    private void ClearGoals()
+    {
+        for (int i = goalListContainer.childCount - 1; i >= 0; i--)
+        {
+            Destroy(goalListContainer.GetChild(i).gameObject);
+        }
     }
 
     private void HandleOnGoalSelected(GoalData data)

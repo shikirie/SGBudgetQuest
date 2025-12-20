@@ -2360,7 +2360,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WEEKLY REPORT
+  m_text: FINANCIAL REPORT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 63cc23f737a7a38498e4d2a737ea4b21, type: 2}
   m_sharedMaterial: {fileID: -5906729856666880772, guid: 63cc23f737a7a38498e4d2a737ea4b21, type: 2}

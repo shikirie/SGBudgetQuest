@@ -177,6 +177,11 @@ public class ReportUIController : BaseController
         // Special message for Bankrupt
         if (status == SessionStatus.Bankrupt)
         {
+            if (sessionData.SessionSummary.currentSavings >= sessionData.SessionSummary.initialAllowance)
+            {
+                return "STATUS: BANKRUPT via GREED. You saved 100% of your money and starved to death. Genius.";
+            }
+            
             return GetBankruptMessage(biggestLeak);
         }
 

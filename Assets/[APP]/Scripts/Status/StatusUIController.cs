@@ -40,9 +40,12 @@ public class StatusUIController : BaseController
         else
         {
             if (value == 0) return;
-            currencyHappinessUI.ShowChange(value);
             float current = currencyHappinessUI.GetValue();
             float newValue = Mathf.Clamp(current + value, 0, 100);
+            if (current != newValue)
+            {
+                currencyHappinessUI.ShowChange(value);
+            }
             currencyHappinessUI.SetValue(newValue);
         }
 

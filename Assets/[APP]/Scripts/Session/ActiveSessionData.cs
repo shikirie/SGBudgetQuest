@@ -122,6 +122,11 @@ public class ActiveSessionData
 
         SessionSummary.currentWallet -= cost;
 
+        if (SessionSummary.currentWallet < 0.01f)
+        {
+            SessionSummary.currentWallet = 0f;
+        }
+
         switch (choice.SpendType)
         {
             case SpendType.Needs:
@@ -158,7 +163,7 @@ public class ActiveSessionData
             return false;
         }
 
-        return SessionSummary.currentWallet <= 1.0f;
+        return SessionSummary.currentWallet < 0.01f;
     }
 
     public void UpdateHappiness(ChoiceData choice)
@@ -193,7 +198,7 @@ public class ActiveSessionData
         }
 
         // Check bankruptcy first
-        if (SessionSummary.currentWallet <= 1.0f)
+        if (SessionSummary.currentWallet <= 0)
         {
             return SessionStatus.Bankrupt;
         }
@@ -310,21 +315,21 @@ public class ActiveSessionData
 
         JSONNode json = new JSONObject();
         json["sessionId"] = SessionSummary.sessionId;
-        json["initialAllowance"] = SessionSummary.initialAllowance;
+        json["initialAllowance"] = (float)Math.Round(SessionSummary.initialAllowance, 2);
         json["initialHappiness"] = SessionSummary.initialHappiness;
         json["currentHappiness"] = SessionSummary.currentHappiness;
-        json["currentSavings"] = SessionSummary.currentSavings;
-        json["currentWallet"] = SessionSummary.currentWallet;
-        json["weeklySpentNeeds"] = SessionSummary.weeklySpentNeeds;
-        json["weeklySpentWants"] = SessionSummary.weeklySpentWants;
-        json["weeklyFoodSpent"] = SessionSummary.weeklyFoodSpent;
-        json["weeklyTransportSpent"] = SessionSummary.weeklyTransportSpent;
-        json["weeklySocialSpent"] = SessionSummary.weeklySocialSpent;
-        json["weeklyShoppingSpent"] = SessionSummary.weeklyShoppingSpent;
-        json["totalWalletSpent"] = SessionSummary.totalWalletSpent;
-        json["daySurvived"] = SessionSummary.daySurvived;
+        json["currentSavings"] = (float)Math.Round(SessionSummary.currentSavings, 2);
+        json["currentWallet"] = (float)Math.Round(SessionSummary.currentWallet, 2);
+        json["weeklySpentNeeds"] = (float)Math.Round(SessionSummary.weeklySpentNeeds, 2);
+        json["weeklySpentWants"] = (float)Math.Round(SessionSummary.weeklySpentWants, 2);
+        json["weeklyFoodSpent"] = (float)Math.Round(SessionSummary.weeklyFoodSpent, 2);
+        json["weeklyTransportSpent"] = (float)Math.Round(SessionSummary.weeklyTransportSpent, 2);
+        json["weeklySocialSpent"] = (float)Math.Round(SessionSummary.weeklySocialSpent, 2);
+        json["weeklyShoppingSpent"] = (float)Math.Round(SessionSummary.weeklyShoppingSpent, 2);
+        json["totalWalletSpent"] = (float)Math.Round(SessionSummary.totalWalletSpent, 2);
+        json["daySurvived"] = Math.Min(SessionSummary.daySurvived, 7);
         json["goalName"] = SessionSummary.goalName;
-        json["goalCost"] = SessionSummary.goalCost;
+        json["goalCost"] = (float)Math.Round(SessionSummary.goalCost, 2);
         json["sessionStatus"] = SessionSummary.sessionStatus;
         json["expenseLeakCategory"] = SessionSummary.expenseLeakCategory;
 
